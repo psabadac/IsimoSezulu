@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.ui.weather_screen
+package com.sabadac.isimosezulu.ui.weather_screen.weather
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sabadac.isimosezulu.R
+import com.sabadac.isimosezulu.data.Weather
 
 @Composable
 fun WeatherRow(
@@ -18,7 +19,7 @@ fun WeatherRow(
     modifier: Modifier
 ) {
     Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.padding(top = 4.dp, bottom = 4.dp)) {
+        modifier = modifier.padding(top = 8.dp, bottom = 10.dp)) {
 
         Column(modifier = Modifier
             .weight(1f)
@@ -53,8 +54,7 @@ fun WeatherRow(
                 .padding(end = 16.dp)) {
             Text(
                 text = weather.max,
-                color = Color.White,
-                modifier = Modifier.padding(end = 8.dp)
+                color = Color.White
             )
             Text(
                 text = stringResource(id = R.string.max).lowercase(),

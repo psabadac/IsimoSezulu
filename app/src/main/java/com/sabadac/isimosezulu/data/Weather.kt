@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.ui.weather_screen
+package com.sabadac.isimosezulu.data
 
 data class Weather(
     val image: Int,

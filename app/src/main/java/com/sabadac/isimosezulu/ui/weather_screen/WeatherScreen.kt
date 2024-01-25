@@ -2,12 +2,15 @@ package com.sabadac.isimosezulu.ui.weather_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.sabadac.isimosezulu.ui.weather_screen.forecast.ForecastSection
+import com.sabadac.isimosezulu.ui.weather_screen.weather.WeatherSection
 
 @Composable
 fun WeatherScreen(
@@ -18,6 +21,7 @@ fun WeatherScreen(
 
     Column(modifier = Modifier.background(Color(weatherUiState.weather.color))) {
         WeatherSection(weather = weatherUiState.weather, modifier = Modifier)
+        ForecastSection(forecasts = weatherUiState.forecasts, modifier = Modifier.fillMaxHeight())
     }
 }
 

@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.ui.weather_screen
+package com.sabadac.isimosezulu.ui.weather_screen.weather
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sabadac.isimosezulu.data.Weather
 
 @Composable
 fun WeatherField(
