@@ -4,7 +4,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.lazy.items
-import com.sabadac.isimosezulu.data.Forecast
+import com.sabadac.isimosezulu.domain.model.Forecast
 
 @Composable
 fun ForecastSection(

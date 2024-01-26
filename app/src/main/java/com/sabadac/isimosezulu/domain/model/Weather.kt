@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.data
+package com.sabadac.isimosezulu.domain.model
 
 data class Weather(
     val image: Int,

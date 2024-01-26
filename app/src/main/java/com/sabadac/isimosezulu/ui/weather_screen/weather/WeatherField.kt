@@ -12,9 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sabadac.isimosezulu.data.Weather
+import com.sabadac.isimosezulu.R
+import com.sabadac.isimosezulu.domain.model.Weather
 
 @Composable
 fun WeatherField(
@@ -36,7 +38,7 @@ fun WeatherField(
                 .padding(top = 80.dp)
         ) {
             Text(
-                text = weather.current,
+                text = stringResource(id = R.string.degree, weather.current),
                 fontSize = 40.sp,
                 color = Color.White
             )

@@ -4,4 +4,5 @@
     <string name="min">Min</string>
     <string name="current">Current</string>
     <string name="max">Max</string>
+    <string name="degree">%1s°</string>
 </resources>

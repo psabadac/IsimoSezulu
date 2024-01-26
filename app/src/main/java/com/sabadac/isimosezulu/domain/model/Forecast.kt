@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.data
+package com.sabadac.isimosezulu.domain.model
 
 data class Forecast(
     val name: String,

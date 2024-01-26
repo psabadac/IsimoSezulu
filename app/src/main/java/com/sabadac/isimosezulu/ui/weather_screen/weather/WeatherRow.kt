@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sabadac.isimosezulu.R
-import com.sabadac.isimosezulu.data.Weather
+import com.sabadac.isimosezulu.domain.model.Weather
 
 @Composable
 fun WeatherRow(
@@ -25,7 +25,7 @@ fun WeatherRow(
             .weight(1f)
             .padding(start = 16.dp)) {
             Text(
-                text = weather.min,
+                text = stringResource(id = R.string.degree, weather.min),
                 color = Color.White
             )
             Text(
@@ -38,7 +38,7 @@ fun WeatherRow(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.weight(1f)) {
             Text(
-                text = weather.current,
+                text = stringResource(id = R.string.degree, weather.current),
                 color = Color.White
             )
             Text(
@@ -53,7 +53,7 @@ fun WeatherRow(
                 .weight(1f)
                 .padding(end = 16.dp)) {
             Text(
-                text = weather.max,
+                text = stringResource(id = R.string.degree, weather.max),
                 color = Color.White
             )
             Text(
