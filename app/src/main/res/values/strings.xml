@@ -5,4 +5,9 @@
     <string name="current">Current</string>
     <string name="max">Max</string>
     <string name="degree">%1s°</string>
+    <string name="dismiss_button">Dismiss</string>
+    <string name="continue_button">Continue</string>
+    <string name="request_location_permission">Request location permission</string>
+    <string name="request_approximate_location_access">Request approximate location access</string>
+    <string name="request_approximate_location_access_description">In order to use this feature please grant access by accepting the location permission dialog.\n\nWould you like to continue?</string>
 </resources>
