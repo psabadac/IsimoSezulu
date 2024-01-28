@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,11 +21,19 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.sabadac.isimosezulu.R
+import com.sabadac.isimosezulu.ui.common.CircularInfiniteLoading
+import com.sabadac.isimosezulu.ui.common.ErrorDialog
+import com.sabadac.isimosezulu.ui.weather_screen.WeatherScreen
+import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("MissingPermission")
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun LocationPermissionsScreen() {
+fun LocationScreen(
+    locationViewModel: LocationViewModel = koinViewModel()
+) {
+    val locationUiState by locationViewModel.uiState.collectAsState()
+
     val locationPermissionState = rememberPermissionState(
         Manifest.permission.ACCESS_COARSE_LOCATION,
     )
@@ -35,7 +45,18 @@ fun LocationPermissionsScreen() {
     rationaleState?.run { PermissionRationaleDialog(rationaleState = this) }
 
     if (locationPermissionState.status.isGranted) {
-        CurrentLocationScreen()
+        if (locationUiState.isLoading) {
+            CircularInfiniteLoading()
+            LaunchedEffect(Unit) {
+                locationViewModel.getLocation()
+            }
+        } else if (locationUiState.error != null) {
+            ErrorDialog(locationUiState.error!!) {
+                locationViewModel.getLocation()
+            }
+        } else {
+            WeatherScreen(location = locationUiState.location!!)
+        }
     } else if (locationPermissionState.status.shouldShowRationale) {
         rationaleState = RationaleState(
             stringResource(R.string.request_approximate_location_access),

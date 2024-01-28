@@ -1,10 +1,10 @@
 package com.sabadac.isimosezulu.ui.weather_screen
 
 import android.annotation.SuppressLint
+import android.location.Location
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sabadac.isimosezulu.domain.GetWeatherUseCase
-import com.sabadac.isimosezulu.domain.GetCurrentLocationUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,8 +14,7 @@ import com.sabadac.isimosezulu.domain.model.WeatherUiState
 import kotlinx.coroutines.flow.update
 
 class WeatherViewModel(
-    private val getWeatherUseCase: GetWeatherUseCase,
-    private val getCurrentLocationUseCase: GetCurrentLocationUseCase
+    private val getWeatherUseCase: GetWeatherUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(
@@ -29,14 +28,8 @@ class WeatherViewModel(
     val uiState: StateFlow<WeatherUiState> = _uiState.asStateFlow()
 
     @SuppressLint("MissingPermission")
-    fun getWeather() {
+    fun getWeather(location: Location) {
         viewModelScope.launch {
-            val location = getCurrentLocationUseCase.invoke()
-            if (location == null) {
-                handleNullLocation()
-                return@launch
-            }
-
             when (val weatherUiState = getWeatherUseCase.invoke(location)) {
                 is Result.Success -> {
                     _uiState.value = weatherUiState.data
@@ -62,14 +55,5 @@ class WeatherViewModel(
             isLoading = false,
             error = errorMessage
         )
-    }
-
-    private fun handleNullLocation() {
-        _uiState.update { currentState ->
-            currentState.copy(
-                isLoading = false,
-                error = "Error Getting location."
-            )
-        }
     }
 }

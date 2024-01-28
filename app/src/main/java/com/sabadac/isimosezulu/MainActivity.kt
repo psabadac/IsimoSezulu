@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.sabadac.isimosezulu.ui.location_screen.LocationPermissionsScreen
+import com.sabadac.isimosezulu.ui.location_screen.LocationScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            LocationPermissionsScreen()
+            LocationScreen()
         }
     }
 }

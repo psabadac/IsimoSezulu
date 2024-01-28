@@ -11,11 +11,16 @@ import com.sabadac.isimosezulu.data.source.ForecastRemoteDataSource
 import com.sabadac.isimosezulu.data.source.WeatherRemoteDataSource
 import com.sabadac.isimosezulu.domain.GetCurrentLocationUseCase
 import com.sabadac.isimosezulu.domain.GetWeatherUseCase
+import com.sabadac.isimosezulu.ui.location_screen.LocationViewModel
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherViewModel
 import org.koin.dsl.module
 
 val weatherViewModelModule = module {
-    factory { WeatherViewModel(get(), get()) }
+    factory { WeatherViewModel(get()) }
+}
+
+val locationViewModel = module {
+    factory { LocationViewModel(get()) }
 }
 
 val networkModule = module {

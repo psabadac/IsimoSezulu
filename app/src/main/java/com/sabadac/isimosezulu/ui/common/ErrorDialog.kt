@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.ui.location_screen
+package com.sabadac.isimosezulu.ui.common
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
