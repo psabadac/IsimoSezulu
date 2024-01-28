@@ -1,5 +1,7 @@
 # IsimoSezulu
-Android Weather App
+Anoter Android Weather App
+
+![demo animation](untitled.gif)
 
 ## Libraries used
  - [x] `androidx.compose.material3:material3-android:1.2.0-rc01` for material design and to prevent crashes in `CircularProgressIndicator`
