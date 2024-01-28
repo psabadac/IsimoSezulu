@@ -1,5 +1,5 @@
 # IsimoSezulu
-Anoter Android Weather App
+Another Android Weather App
 
 ![demo animation](untitled.gif)
 
