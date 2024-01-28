@@ -1,4 +1,4 @@
-# IsimoSezulu
+# Isimo Sezulu
 Another Android Weather App
 
 ![demo animation](untitled.gif)
@@ -33,7 +33,7 @@ dependencies.constraints {
 - [x] Please set `api_key="YOUR_API_KEY"` in `gradle.properties` file
 
 ## Architecture
-- [x] I've tried to stick to Ui-Domain-Data approach, but I used less interfaces than I shoud have.
+- [x] I've tried Clean Architecture and to stick to Ui-Domain-Data approach
 - [x] In the Ui I've only put composables and the related viewModels (one viewModel per screen approach)
 - [x] The Ui flow is: `LocationScreen` -> `WeatherScreen`.
 - [x] For each network request I use `RequestInterceptor` to add the `appid` parameter - which is the `api_key` you've set above 
@@ -43,3 +43,12 @@ dependencies.constraints {
 - [x] `WeatherRepository` uses `WeatherMapper` to convert the data received into a more suitable format
 - [x] `ForecastRepository` calls `ForecastRemoteDataSource` which calls the ForecastApi to retrieve the data
 - [x] `ForecastRepository` uses `ForecastMapper` to convert the data received in a more suitable format
+
+## Todos
+- [ ] More unit tests
+- [ ] Generate ai resource for other weather states like thunderstorms, snow etc.
+- [ ] Add the location name under weather state
+- [ ] Use more interface to lose coupling and even extract domain and that to their own module
+- [ ] Save locations as favourites and be able to edit the list
+- [ ] Change units between metric, imperial and default
+- [ ] See saved locations on map
