@@ -1,5 +1,6 @@
 package com.sabadac.isimosezulu.domain
 
+import android.location.Location
 import com.sabadac.isimosezulu.data.repository.ForecastRepository
 import com.sabadac.isimosezulu.data.repository.WeatherRepository
 import com.sabadac.isimosezulu.domain.model.WeatherUiState
@@ -11,16 +12,18 @@ class GetWeatherUseCase(
     private val weatherRepository: WeatherRepository,
     private val forecastRepository: ForecastRepository,
 ) {
-    suspend operator fun invoke(lat: Double, lon: Double): Result<WeatherUiState> =
+    suspend operator fun invoke(location: Location): Result<WeatherUiState> =
         withContext(Dispatchers.IO) {
-            val weather = weatherRepository.getWeather(lat, lon)
-            val forecasts = forecastRepository.getForecast(lat, lon)
+            val weather = weatherRepository.getWeather(location = location)
+            val forecasts = forecastRepository.getForecast(location = location)
 
             if (weather is Result.Success && forecasts is Result.Success) {
                 Result.Success(
                     WeatherUiState(
                         weather = weather.data,
                         forecasts = forecasts.data,
+                        error = null,
+                        isLoading = false
                     )
                 )
             } else if (weather is Result.Error) {

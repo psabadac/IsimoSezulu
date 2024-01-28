@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface ForecastApi {
     @GET("data/2.5/forecast/daily?cnt=5")
     suspend fun getForecast(
-        @Query("lat") lat: Double,
-        @Query("lon") lon: Double,
+        @Query("lat") latitude: Double,
+        @Query("lon") longitude: Double,
     ): ForecastApiModel
 }
