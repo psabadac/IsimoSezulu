@@ -5,17 +5,18 @@ import com.sabadac.isimosezulu.data.repository.ForecastRepository
 import com.sabadac.isimosezulu.data.repository.WeatherRepository
 import com.sabadac.isimosezulu.domain.model.Forecast
 import com.sabadac.isimosezulu.domain.model.WeatherUiState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.sabadac.isimosezulu.domain.model.Result
 import com.sabadac.isimosezulu.domain.model.Weather
+import kotlin.coroutines.CoroutineContext
 
 class GetWeatherUseCase(
     private val weatherRepository: WeatherRepository,
     private val forecastRepository: ForecastRepository,
+    private val dispatcher: CoroutineContext
 ) {
     suspend operator fun invoke(location: Location): Result<WeatherUiState> =
-        withContext(Dispatchers.IO) {
+        withContext(dispatcher) {
             val weather = weatherRepository.getWeather(location = location)
             val forecasts = forecastRepository.getForecast(location = location)
 

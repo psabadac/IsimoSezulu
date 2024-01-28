@@ -13,6 +13,7 @@ import com.sabadac.isimosezulu.domain.GetCurrentLocationUseCase
 import com.sabadac.isimosezulu.domain.GetWeatherUseCase
 import com.sabadac.isimosezulu.ui.location_screen.LocationViewModel
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherViewModel
+import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
 val weatherViewModelModule = module {
@@ -48,9 +49,11 @@ val weatherRemoteDataSourceModule = module {
 }
 
 val weatherUseCaseModule = module {
-    factory { GetWeatherUseCase(get(), get()) }
+    factory { GetWeatherUseCase(get(), get(), provideIoDispatcher()) }
 }
 
 val currentLocationUseCase = module {
-    factory { GetCurrentLocationUseCase(get()) }
+    factory { GetCurrentLocationUseCase(get(), provideIoDispatcher()) }
 }
+
+fun provideIoDispatcher() = Dispatchers.IO
