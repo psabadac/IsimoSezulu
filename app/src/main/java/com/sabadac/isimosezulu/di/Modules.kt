@@ -19,7 +19,7 @@ val weatherViewModelModule = module {
     factory { WeatherViewModel(get()) }
 }
 
-val locationViewModel = module {
+val locationViewModelModule = module {
     factory { LocationViewModel(get()) }
 }
 

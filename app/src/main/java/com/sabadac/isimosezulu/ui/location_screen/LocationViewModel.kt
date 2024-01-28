@@ -31,13 +31,13 @@ class LocationViewModel(
             val location = this@LocationViewModel.getCurrentLocationUseCase.invoke()
             if (location == null) {
                 handleNullLocation()
-            } else {
-                _uiState.value = LocationUiState(
-                    location = location,
-                    error = null,
-                    isLoading = false
-                )
+                return@launch
             }
+            _uiState.value = LocationUiState(
+                location = location,
+                error = null,
+                isLoading = false
+            )
         }
     }
 

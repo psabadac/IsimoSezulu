@@ -44,35 +44,41 @@ fun LocationScreen(
 
     rationaleState?.run { PermissionRationaleDialog(rationaleState = this) }
 
-    if (locationPermissionState.status.isGranted) {
-        if (locationUiState.isLoading) {
-            CircularInfiniteLoading()
-            LaunchedEffect(Unit) {
-                locationViewModel.getLocation()
+    when {
+        locationPermissionState.status.isGranted -> {
+            if (locationUiState.isLoading) {
+                CircularInfiniteLoading()
+                LaunchedEffect(Unit) {
+                    locationViewModel.getLocation()
+                }
+            } else if (locationUiState.error != null) {
+                ErrorDialog(locationUiState.error!!) {
+                    locationViewModel.getLocation()
+                }
+            } else {
+                WeatherScreen(location = locationUiState.location!!)
             }
-        } else if (locationUiState.error != null) {
-            ErrorDialog(locationUiState.error!!) {
-                locationViewModel.getLocation()
-            }
-        } else {
-            WeatherScreen(location = locationUiState.location!!)
         }
-    } else if (locationPermissionState.status.shouldShowRationale) {
-        rationaleState = RationaleState(
-            stringResource(R.string.request_approximate_location_access),
-            stringResource(R.string.request_approximate_location_access_description),
-        ) { proceed ->
-            if (proceed) {
-                locationPermissionState.launchPermissionRequest()
+
+        locationPermissionState.status.shouldShowRationale -> {
+            rationaleState = RationaleState(
+                stringResource(R.string.request_approximate_location_access),
+                stringResource(R.string.request_approximate_location_access_description),
+            ) { proceed ->
+                if (proceed) {
+                    locationPermissionState.launchPermissionRequest()
+                }
+                rationaleState = null
             }
-            rationaleState = null
         }
-    } else {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Button(onClick = {
-                locationPermissionState.launchPermissionRequest()
-            }, modifier = Modifier.align(Alignment.Center)) {
-                Text(text = stringResource(R.string.request_location_permission))
+
+        else -> {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Button(onClick = {
+                    locationPermissionState.launchPermissionRequest()
+                }, modifier = Modifier.align(Alignment.Center)) {
+                    Text(text = stringResource(R.string.request_location_permission))
+                }
             }
         }
     }

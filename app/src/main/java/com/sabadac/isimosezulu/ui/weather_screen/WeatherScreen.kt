@@ -39,30 +39,36 @@ fun WeatherScreen(
 
     val weatherUiState by weatherViewModel.uiState.collectAsState()
 
-    if (weatherUiState.isLoading) {
-        CircularInfiniteLoading()
+    when {
+        weatherUiState.isLoading -> {
+            CircularInfiniteLoading()
 
-        LaunchedEffect(Unit) {
-            weatherViewModel.getWeather(location)
-        }
-    } else if(weatherUiState.error != null) {
-        ErrorDialog(weatherUiState.error!!) {
-            weatherViewModel.retry()
-        }
-    } else {
-        Box(modifier = Modifier.pullRefresh(state = pullRefreshState)) {
-            Column(modifier = Modifier
-                .background(Color(weatherUiState.weather!!.color))
-
-            ) {
-                WeatherSection(weather = weatherUiState.weather!!, modifier = Modifier)
-                ForecastSection(forecasts = weatherUiState.forecasts!!, modifier = Modifier.fillMaxHeight())
+            LaunchedEffect(Unit) {
+                weatherViewModel.getWeather(location)
             }
-            PullRefreshIndicator(
-                refreshing = isRefreshing,
-                state = pullRefreshState,
-                modifier = Modifier.align(Alignment.TopCenter)
-            )
+        }
+
+        weatherUiState.error != null -> {
+            ErrorDialog(weatherUiState.error!!) {
+                weatherViewModel.retry()
+            }
+        }
+
+        else -> {
+            Box(modifier = Modifier.pullRefresh(state = pullRefreshState)) {
+                Column(modifier = Modifier
+                    .background(Color(weatherUiState.weather!!.color))
+
+                ) {
+                    WeatherSection(weather = weatherUiState.weather!!, modifier = Modifier)
+                    ForecastSection(forecasts = weatherUiState.forecasts!!, modifier = Modifier.fillMaxHeight())
+                }
+                PullRefreshIndicator(
+                    refreshing = isRefreshing,
+                    state = pullRefreshState,
+                    modifier = Modifier.align(Alignment.TopCenter)
+                )
+            }
         }
     }
 }
