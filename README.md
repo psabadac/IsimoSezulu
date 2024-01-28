@@ -30,7 +30,7 @@ dependencies.constraints {
 ```
 
 ## How to build
-- [x] Please set `api_key=YOUR_API_KEY` in `gradle.properties` file
+- [x] Please set `api_key="YOUR_API_KEY"` in `gradle.properties` file
 
 ## Architecture
 - [x] I've tried to stick to Ui-Domain-Data approach, but I used less interfaces than I shoud have.
