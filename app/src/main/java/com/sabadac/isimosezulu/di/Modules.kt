@@ -9,19 +9,20 @@ import com.sabadac.isimosezulu.data.repository.ForecastRepository
 import com.sabadac.isimosezulu.data.repository.WeatherRepository
 import com.sabadac.isimosezulu.data.source.ForecastRemoteDataSource
 import com.sabadac.isimosezulu.data.source.WeatherRemoteDataSource
+import com.sabadac.isimosezulu.domain.GetCurrentLocationUseCase
 import com.sabadac.isimosezulu.domain.GetWeatherUseCase
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherViewModel
 import org.koin.dsl.module
 
 val weatherViewModelModule = module {
-    factory { WeatherViewModel(get()) }
+    factory { WeatherViewModel(get(), get()) }
 }
 
 val networkModule = module {
-    single { RequestInterceptor() }
-    single { provideClient(get()) }
-    single { provideWeatherApi(get()) }
-    single { provideForecastApi(get()) }
+    factory { RequestInterceptor() }
+    factory { provideClient(get()) }
+    factory { provideWeatherApi(get()) }
+    factory { provideForecastApi(get()) }
     single { provideRetrofit(get()) }
 }
 
@@ -43,4 +44,8 @@ val weatherRemoteDataSourceModule = module {
 
 val weatherUseCaseModule = module {
     factory { GetWeatherUseCase(get(), get()) }
+}
+
+val currentLocationUseCase = module {
+    factory { GetCurrentLocationUseCase(get()) }
 }
