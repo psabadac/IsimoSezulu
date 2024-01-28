@@ -8,7 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.sabadac.isimosezulu.R
+import com.sabadac.isimosezulu.data.Constants
 
 @Composable
 fun ErrorDialog(
@@ -32,5 +34,17 @@ fun ErrorDialog(
                 }
             }
         )
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    backgroundColor = Constants.demoBackgroundColor
+)
+@Composable
+fun ErrorDialogPreview() {
+    ErrorDialog(message = "THis is a terrible error") {
+        
     }
 }

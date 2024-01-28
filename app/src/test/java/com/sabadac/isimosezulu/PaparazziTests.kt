@@ -4,8 +4,9 @@ import android.location.Location
 import androidx.compose.ui.Modifier
 import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
-import com.sabadac.isimosezulu.domain.model.Forecast
-import com.sabadac.isimosezulu.domain.model.Weather
+import com.sabadac.isimosezulu.data.Constants.demoForecast
+import com.sabadac.isimosezulu.data.Constants.demoForecasts
+import com.sabadac.isimosezulu.data.Constants.demoWeather
 import com.sabadac.isimosezulu.domain.model.WeatherUiState
 import com.sabadac.isimosezulu.ui.common.CircularInfiniteLoading
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherScreen
@@ -23,54 +24,6 @@ import org.junit.Rule
 import org.junit.Test
 
 class PaparazziTests {
-    private val weather = Weather(
-        image = R.drawable.forest_cloudy,
-        color = R.color.cloudy,
-        status = "CLOUDY",
-        min = "18",
-        current = "24",
-        max = "26"
-    )
-
-    private val forecast = Forecast(
-        name = "Monday",
-        icon = R.drawable.weather_ic_01d,
-        status = "Snow",
-        temperature = "19"
-    )
-
-    private val forecasts = listOf(
-        Forecast(
-            name = "Monday",
-            icon = R.drawable.weather_ic_01d,
-            status = "Snow",
-            temperature = "19"
-        ),
-        Forecast(
-            name = "Tuesday",
-            icon = R.drawable.weather_ic_02d,
-            status = "Snow",
-            temperature = "18"
-        ),
-        Forecast(
-            name = "Wednesday",
-            icon = R.drawable.weather_ic_03d,
-            status = "Snow",
-            temperature = "15"
-        ),
-        Forecast(
-            name = "Thursday",
-            icon = R.drawable.weather_ic_04d,
-            status = "Snow",
-            temperature = "17"
-        ),
-        Forecast(
-            name = "Friday",
-            icon = R.drawable.weather_ic_09d,
-            status = "Snow",
-            temperature = "19"
-        )
-    )
 
     @get:Rule
     val paparazzi = Paparazzi(
@@ -87,35 +40,35 @@ class PaparazziTests {
     @Test
     fun weatherFieldTest() {
         paparazzi.snapshot {
-            WeatherField(weather = weather, modifier = Modifier)
+            WeatherField(weather = demoWeather, modifier = Modifier)
         }
     }
 
     @Test
     fun weatherRowTest() {
         paparazzi.snapshot {
-            WeatherRow(weather = weather, modifier = Modifier)
+            WeatherRow(weather = demoWeather, modifier = Modifier)
         }
     }
 
     @Test
     fun forecastRowTest() {
         paparazzi.snapshot {
-            ForecastRow(forecast = forecast, modifier = Modifier)
+            ForecastRow(forecast = demoForecast, modifier = Modifier)
         }
     }
 
     @Test
     fun weatherSectionTest() {
         paparazzi.snapshot {
-            WeatherSection(weather = weather, modifier = Modifier)
+            WeatherSection(weather = demoWeather, modifier = Modifier)
         }
     }
 
     @Test
     fun forecastSectionTest() {
         paparazzi.snapshot {
-            ForecastSection(forecasts = forecasts, modifier = Modifier)
+            ForecastSection(forecasts = demoForecasts, modifier = Modifier)
         }
     }
 
@@ -124,8 +77,8 @@ class PaparazziTests {
         paparazzi.snapshot {
             val uiState = MutableStateFlow(
                 WeatherUiState(
-                    weather = weather,
-                    forecasts = forecasts,
+                    weather = demoWeather,
+                    forecasts = demoForecasts,
                     error = null,
                     isLoading = false
                 )

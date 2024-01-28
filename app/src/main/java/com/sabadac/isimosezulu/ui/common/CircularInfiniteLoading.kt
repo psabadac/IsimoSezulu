@@ -8,7 +8,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sabadac.isimosezulu.data.Constants
 
 @Composable
 fun CircularInfiniteLoading() {
@@ -21,4 +23,14 @@ fun CircularInfiniteLoading() {
                 .align(Alignment.Center),
         )
     }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    backgroundColor = Constants.demoBackgroundColor
+)
+@Composable
+fun CircularInfiniteLoadingPreview() {
+    CircularInfiniteLoading()
 }
