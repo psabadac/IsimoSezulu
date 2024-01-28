@@ -33,7 +33,7 @@ dependencies.constraints {
 - [x] Please set `api_key="YOUR_API_KEY"` in `gradle.properties` file
 
 ## Architecture
-- [x] I've tried Clean Architecture and to stick to Ui-Domain-Data approach
+- [x] Focused on Clean Architecture and Ui-Domain-Data approach
 - [x] In the Ui I've only put composables and the related viewModels (one viewModel per screen approach)
 - [x] The Ui flow is: `LocationScreen` -> `WeatherScreen`.
 - [x] For each network request I use `RequestInterceptor` to add the `appid` parameter - which is the `api_key` you've set above 
