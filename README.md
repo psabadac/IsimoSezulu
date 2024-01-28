@@ -5,6 +5,7 @@ Anoter Android Weather App
 
 ## Libraries used
  - [x] `androidx.compose.material3:material3-android:1.2.0-rc01` for material design and to prevent crashes in `CircularProgressIndicator`
+ - [x] `androidx.compose.material:material:1.6.0` for pull to refresh
  - [x] `androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0` for compose lifecycler
  - [x] `io.insert-koin:koin-androidx-compose:3.6.0-wasm-alpha1` for dependency injection
  - [x] `com.squareup.retrofit2:retrofit:2.9.0` and `com.squareup.retrofit2:converter-gson:2.9.0` for networking
