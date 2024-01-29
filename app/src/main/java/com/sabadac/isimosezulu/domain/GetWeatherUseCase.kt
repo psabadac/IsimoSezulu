@@ -4,7 +4,7 @@ import android.location.Location
 import com.sabadac.isimosezulu.data.repository.ForecastRepository
 import com.sabadac.isimosezulu.data.repository.WeatherRepository
 import com.sabadac.isimosezulu.domain.model.Forecast
-import com.sabadac.isimosezulu.domain.model.WeatherUiState
+import com.sabadac.isimosezulu.ui.weather_screen.WeatherUiState
 import kotlinx.coroutines.withContext
 import com.sabadac.isimosezulu.domain.model.Result
 import com.sabadac.isimosezulu.domain.model.Weather

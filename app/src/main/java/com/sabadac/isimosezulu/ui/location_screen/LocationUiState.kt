@@ -1,4 +1,4 @@
-package com.sabadac.isimosezulu.domain.model
+package com.sabadac.isimosezulu.ui.location_screen
 
 import android.location.Location
 

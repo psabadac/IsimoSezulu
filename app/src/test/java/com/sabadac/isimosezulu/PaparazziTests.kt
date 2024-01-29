@@ -7,7 +7,7 @@ import app.cash.paparazzi.Paparazzi
 import com.sabadac.isimosezulu.data.Constants.demoForecast
 import com.sabadac.isimosezulu.data.Constants.demoForecasts
 import com.sabadac.isimosezulu.data.Constants.demoWeather
-import com.sabadac.isimosezulu.domain.model.WeatherUiState
+import com.sabadac.isimosezulu.ui.weather_screen.WeatherUiState
 import com.sabadac.isimosezulu.ui.common.CircularInfiniteLoading
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherScreen
 import com.sabadac.isimosezulu.ui.weather_screen.WeatherViewModel

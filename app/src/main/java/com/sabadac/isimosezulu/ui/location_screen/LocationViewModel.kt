@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sabadac.isimosezulu.domain.GetCurrentLocationUseCase
-import com.sabadac.isimosezulu.domain.model.LocationUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

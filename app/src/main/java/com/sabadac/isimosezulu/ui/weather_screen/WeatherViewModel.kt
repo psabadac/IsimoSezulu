@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import com.sabadac.isimosezulu.domain.model.Result
-import com.sabadac.isimosezulu.domain.model.WeatherUiState
 import kotlinx.coroutines.flow.update
 
 class WeatherViewModel(
