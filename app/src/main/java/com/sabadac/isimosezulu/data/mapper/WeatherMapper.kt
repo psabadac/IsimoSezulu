@@ -1,6 +1,8 @@
 package com.sabadac.isimosezulu.data.mapper
 
 import com.sabadac.isimosezulu.R
+import com.sabadac.isimosezulu.data.Constants.cloudyRange
+import com.sabadac.isimosezulu.data.Constants.rainyRange
 import com.sabadac.isimosezulu.domain.model.Result
 import com.sabadac.isimosezulu.domain.model.Weather
 import com.sabadac.isimosezulu.data.model.WeatherApiModel
@@ -30,15 +32,15 @@ object WeatherMapper {
         }
 
     private fun imageResourceIdFromCode(code: Int) = when (code) {
-        in 801..804 -> R.drawable.forest_cloudy
-        in 200..600 -> R.drawable.forest_rainy
+        in cloudyRange -> R.drawable.forest_cloudy
+        in rainyRange -> R.drawable.forest_rainy
         else -> R.drawable.forest_sunny
     }
 
     private fun colorFromWeatherId(code: Int) =
         when (code) {
-            in 801..804 -> R.color.cloudy
-            in 200..600 -> R.color.rainy
+            in cloudyRange -> R.color.cloudy
+            in rainyRange -> R.color.rainy
             else -> R.color.sunny
         }
 }

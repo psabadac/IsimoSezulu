@@ -7,6 +7,9 @@ import com.sabadac.isimosezulu.domain.model.Weather
 object Constants {
     const val demoBackgroundColor = 0x54717AL
 
+    val cloudyRange = 801..804
+    val rainyRange = 200..600
+
     val demoWeather = Weather(
         image = R.drawable.forest_cloudy,
         color = R.color.cloudy,

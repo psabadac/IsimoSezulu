@@ -21,7 +21,7 @@ object ForecastMapper {
                         val weatherParam = forecastDay.weather.firstOrNull()
                         Forecast(
                             name = getNameFromUnixTimestamp(forecastDay.dt),
-                            icon = imageResourceIconString(weatherParam?.icon),
+                            icon = imageResourceFromIconString(weatherParam?.icon),
                             status = weatherParam?.main ?: "",
                             temperature = forecastDay.temp.day.toInt().toString()
                         )
@@ -37,7 +37,7 @@ object ForecastMapper {
 
     private fun getNameFromUnixTimestamp(unixTimestamp: Long) =
         SimpleDateFormat("EEEE", Locale.getDefault()).format(unixTimestamp * 1000)
-    private fun imageResourceIconString(icon: String?) =
+    private fun imageResourceFromIconString(icon: String?) =
         when(icon) {
             "01d" -> R.drawable.weather_ic_01d
             "01n" -> R.drawable.weather_ic_01n
