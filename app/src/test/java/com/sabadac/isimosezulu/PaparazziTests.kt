@@ -27,7 +27,8 @@ class PaparazziTests {
 
     @get:Rule
     val paparazzi = Paparazzi(
-        deviceConfig = DeviceConfig.PIXEL_5
+        deviceConfig = DeviceConfig.PIXEL_5,
+        maxPercentDifference = 0.01
     )
 
     @Test
